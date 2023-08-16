@@ -5,9 +5,12 @@ export default function Alert(props) {
     const lower = word.toLowerCase();
     return lower.charAt(0).toUpperCase() + lower.slice(1)
   }
-  return (
-    props.Alert && (
-      <div
+  
+  return ( 
+    <> 
+    <div style={{height:"50px"}}>
+    {props.Alert && 
+     (<div
         className=  {`alert alert-${props.Alert.type} alert-dismissible fade show `}
         role="alert"
       >
@@ -20,7 +23,8 @@ export default function Alert(props) {
         >
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-    )
+      </div>)}
+    </div>
+    </>
   );
 }

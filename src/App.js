@@ -1,13 +1,17 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
-// import About from "./Components/About";
+import About from "./Components/About";
 import React, { useState } from "react";
 import Alert from "./Components/Alert";
-// import {Routes,Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
 
   const [alert, setAlert] = useState(null);
 
@@ -20,12 +24,31 @@ function App() {
       setAlert(null);
     }, 1500);
   };
-  const toggleMode = () => {
+  // const [btn,setBtn] = useState("Enable Light Mode")
+  const removeClasses = ()=>{
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-success')
+      }
+  const toggleMode = (cls) => {
+    removeClasses();
+    // console.log(cls)
+    document.body.classList.add('bg-'+cls)
     if (mode === "light") {
+      // document.body.classList.add('bg-'+cls)
       setMode("dark");
       document.body.style.backgroundColor = "#130e23";
       showAlert("Dark Mode is Enabled", "success");
       document.title = "TextUtils -  DarkMode";
+      // setMyStyle({
+      //   color:"White",
+      //   backgroundColor: "Black",
+      //   border:"2px solid red"
+      // })
+
+      // setBtn("Enable Dark Mode")
+
       // setInterval( ()=>{
       //   document.title="TextUtils is Amazing Text Analyzer"
       // },3000 );
@@ -34,55 +57,75 @@ function App() {
       //   document.title="Download TextUtils Now"
       // },2000 );
     } else {
+      // document.body.classList.add('bg-light')
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("light Mode is Enabled", "success");
       document.title = "TextUtils -  LightMode";
+
+      // setMyStyle({
+      //   color:"Black",
+      //   backgroundColor:"White",
+       
+      // })
+
+      // setBtn("Enable Light Mode")
     }
   };
-  const greenMode = () => {
-    if (mode === "light") {
-      setMode("success");
-      console.log("switch to green mode");
-    } else {
-      setMode("light");
-      console.log("switch to light mode");
-    }
-  };
+  // const greenMode = () => {
+  //   if (mode === "light") {
+  //     setMode("success");
+  //     console.log("switch to green mode");
+  //   } else {
+  //     setMode("light");
+  //     console.log("switch to light mode");
+  //   }
+  // };
 
   return (
     <>
-     
       <Navbar
-          title="textUtils"
-          mode={mode}
-          toggleMode={toggleMode}
-          greenMode={greenMode}
-        />
+        title="textUtils"
+        mode={mode}
+        toggleMode={toggleMode} 
+      />
 
-        <Alert Alert={alert} />
-        <TextForm
-          heading="Enter The Text To Analyze Below"
-          mode={mode}
-          showAlert={showAlert}
-        />
-       { /* <About heading="About Us" /> */}
-
-        {/*<Routes>
-        <Route exact path="/" element={ <TextForm
-          heading="Enter The Text To Analyze Below"
-          mode={mode}
-          showAlert={showAlert}
-        />}> </Route>
-
-        <Route exact path ="/about" element={<About heading="About Us" />}> </Route>
-        
-        </Routes>*/}
+      <Alert Alert={alert} />
+      {/*  <TextForm
+        heading="Enter The Text To Analyze Below"
+        mode={mode}
+        showAlert={showAlert}
+      />
+     <About heading="About Us" />
+    <Route exact path="/about" element={<About heading="About Us" css={myStyle} />}>
+    */}
+  
 
   
-        {/* <Navbar title="textUtils"  aboutTextutils="About Textutils" sushmita="Home"/> */}
+    <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <TextForm
+              heading="Try Texttutils - Word Counter,Character Counter, Remove Extra Spaces"
+              mode={mode}
+              showAlert={showAlert}
+            />
+          }
+        >
+          
+        </Route>
+       {/*<Route exact path="/about" element={<About heading="About Us" css={myStyle} />}></Route>*/}
 
-        {/*<div className="container my-3">
+        <Route exact path="/about" element={<About heading="About Us" mode={mode} />}>
+          
+        </Route>
+      </Routes>
+
+      {/* <Navbar title="textUtils"  aboutTextutils="About Textutils" sushmita="Home"/> */}
+
+      {/*<div className="container my-3">
         <TextForm
           heading="Enter The Text To Analyze Below"
           mode={mode}
@@ -92,7 +135,6 @@ function App() {
       <div className="container my-3">
         <About heading="About Us" />
       </div>*/}
-     
     </>
   );
 }

@@ -1,47 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
 import propTypes from "prop-types";
 
 export default function About(props) {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
 
-  const [btntext, setBtnText] = useState("Enable Dark Mode");
+  // const [btntext, setBtnText] = useState("Enable Dark Mode");
 
-  const toggleStlyle = () => {
-    if (myStyle.color === "white") {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "2px solid red",
-      });
-      setBtnText("Enable Dark Mode");
-    }
-  };
+  // const toggleStlyle = () => {
+  //   if (myStyle.color === "white") {
+  //     setMyStyle({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
+  //     setBtnText("Enable Light Mode");
+  //   } else {
+  //     setMyStyle({
+  //       color: "white",
+  //       backgroundColor: "black",
+  //       border: "2px solid red",
+  //     });
+  //     setBtnText("Enable Dark Mode");
+  //   }
+  // };
+  let design = {
+    color: props.mode ==="dark"?"white":"black",
+    backgroundColor:props.mode ==="dark"?"#130e23":"white",
+    border:props.mode==="dark"?"2px solid":"1px solid",
+    borderColor:props.mode==="dark"?"#130e23":"white"
+
+  }
   return (
-    <div className="container my-5" style={myStyle}>
-      <h2> {props.heading} </h2>
+    <div className="container my-5" style={design}>
+      <h2 className=""> <b>{props.heading}</b> </h2>
       <div className="accordion" id="accordionExample">
         <div className="card">
-          <div className="card-header" id="headingOne" style={myStyle}>
+          <div className="card-header" id="headingOne" style={design}>
             <h2 className="mb-0">
               <button
                 className="btn btn-link"
                 type="button"
+
                 data-toggle="collapse"
                 data-target="#collapseOne"
                 aria-expanded="true"
                 aria-controls="collapseOne"
-                style={myStyle}
+                style={design}
               >
-                Collapsible Group Item #1
+               <strong> Analyze Your Text</strong>
               </button>
             </h2>
           </div>
@@ -52,22 +60,13 @@ export default function About(props) {
             aria-labelledby="headingOne"
             data-parent="#accordionExample"
           >
-            <div className="card-body" style={myStyle}>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+            <div className="card-body" style={design}>
+              Textutils gives you a way to analyze your text quickly and efficiently. Be it word count, character count or 
             </div>
           </div>
         </div>
         <div className="card">
-          <div className="card-header" id="headingTwo" style={myStyle}>
+          <div className="card-header" id="headingTwo" style={design}>
             <h2 className="mb-0">
               <button
                 className="btn btn-link collapsed"
@@ -76,9 +75,9 @@ export default function About(props) {
                 data-target="#collapseTwo"
                 aria-expanded="false"
                 aria-controls="collapseTwo"
-                style={myStyle}
+                style={design}
               >
-                Collapsible Group Item #2
+                <strong> Free to use</strong>
               </button>
             </h2>
           </div>
@@ -88,22 +87,13 @@ export default function About(props) {
             aria-labelledby="headingTwo"
             data-parent="#accordionExample"
           >
-            <div className="card-body" style={myStyle}>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+            <div className="card-body" style={design}>
+             Textutils is a free character counter tool that provides instant character count and word count statistics for a given text. Textutils reports the number of words and characters. Thus it is suitable for writing text with word/ character limit.
             </div>
           </div>
         </div>
-        <div className="card">
-          <div className="card-header" id="headingThree" style={myStyle}>
+        <div className="card mb-3">
+          <div className="card-header" id="headingThree" style={design}>
             <h2 className="mb-0">
               <button
                 className="btn btn-link collapsed"
@@ -112,9 +102,9 @@ export default function About(props) {
                 data-target="#collapseThree"
                 aria-expanded="false"
                 aria-controls="collapseThree"
-                style={myStyle}
+                style={design}
               >
-                Collapsible Group Item #3
+               <strong>Browser Compatible</strong> 
               </button>
             </h2>
           </div>
@@ -124,24 +114,15 @@ export default function About(props) {
             aria-labelledby="headingThree"
             data-parent="#accordionExample"
           >
-            <div className="card-body" style={myStyle}>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life
-              accusamus terry richardson ad squid. 3 wolf moon officia aute, non
-              cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-              laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-              on it squid single-origin coffee nulla assumenda shoreditch et.
-              Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-              nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-              lomo. Leggings occaecat craft beer farm-to-table, raw denim
-              aesthetic synth nesciunt you probably haven't heard of them
-              accusamus labore sustainable VHS.
+            <div className="card-body" style={design}>
+             This is word counter software works in any web browsers such as Chrome, Firefox, Internet Explorer, Safari, Opera. It suits to count characters in facebook, blog, books, excel document, pdf document, essays etc.
             </div>
           </div>
         </div>
       </div>
-      <button className="btn btn-outline-success my-3" onClick={toggleStlyle}>
+      {/*<button className="btn btn-outline-success my-3" onClick={toggleStlyle}>
         {btntext}{" "}
-      </button>
+  </button> */}
     </div>
   );
 }
